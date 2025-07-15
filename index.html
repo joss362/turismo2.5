@@ -49,13 +49,38 @@
         </section>
     </main>
 
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2025 Andahuaylas Turismo | Todos los derechos reservados :v</p>
-        </div>
-    </footer>
+  
+        
+        <!-- Sección de comentarios existentes -->
+        <section class="comments-section">
+            <h2>Comentarios</h2>
+            <div id="comments-list" class="comments-list">
+                <!-- Los comentarios se cargarán aquí con JavaScript -->
+                <p>Cargando comentarios...</p>
+            </div>
+        </section>
+        
+        <!-- Formulario para nuevos comentarios -->
+        <section class="comment-form">
+            <h2>Deja tu comentario</h2>
+            <form id="comment-form">
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comentario:</label>
+                    <textarea id="comment" name="comment" rows="4" required></textarea>
+                </div>
+                <button type="submit" id="submit-btn">Enviar Comentario</button>
+                <p id="form-message" class="message"></p>
+            </form>
+        </section>
+    </div>
 
     <!-- JavaScript -->
     <script src="js/script.js"></script>
