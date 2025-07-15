@@ -1,0 +1,266 @@
+/* ============ HISTORIA DE ANDAHUAYLAS ============ */
+
+/* Variables específicas */
+:root {
+    --timeline-color: var(--black);
+    --timeline-dot: 16px;
+    --timeline-line: 3px;
+}
+
+.history-page {
+    background-color: var(--white);
+    color: var(--gray-90);
+}
+
+/* Hero Section */
+.history-hero {
+    position: relative;
+    height: 60vh;
+    min-height: 500px;
+    margin-top: 80px;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%) contrast(120%) brightness(0.7);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 5%;
+    color: var(--white);
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 300;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 300;
+    max-width: 700px;
+    opacity: 0.9;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Línea de tiempo */
+.timeline-section {
+    padding: 5rem 0;
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 3rem auto 0;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--timeline-line);
+    height: 100%;
+    background: var(--timeline-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.timeline-date {
+    width: 45%;
+    padding: 1rem;
+    font-weight: 500;
+    color: var(--gray-70);
+    display: flex;
+    align-items: center;
+}
+
+.timeline-item:nth-child(odd) .timeline-date {
+    justify-content: flex-end;
+}
+
+.timeline-content {
+    width: 45%;
+    padding: 1.5rem;
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    border-top: 3px solid var(--black);
+}
+
+.timeline-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.timeline-image {
+    margin: 1rem 0;
+}
+
+.timeline-image img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%) contrast(110%);
+    transition: var(--transition);
+}
+
+.timeline-image:hover img {
+    filter: grayscale(30%) contrast(110%);
+}
+
+/* Personajes históricos */
+.characters-section {
+    padding: 3rem 0;
+    background: var(--gray-10);
+}
+
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.character-card {
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.character-image {
+    height: 250px;
+    overflow: hidden;
+}
+
+.character-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(110%);
+    transition: var(--transition);
+}
+
+.character-card:hover .character-image img {
+    filter: grayscale(30%) contrast(110%);
+}
+
+.character-content {
+    padding: 1.5rem;
+}
+
+.character-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.character-content p {
+    color: var(--gray-70);
+    line-height: 1.7;
+}
+
+/* Museo virtual */
+.museum-section {
+    padding: 5rem 0;
+}
+
+.artifact-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.artifact-item {
+    text-align: center;
+}
+
+.artifact-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(120%);
+    transition: var(--transition);
+    margin-bottom: 0.5rem;
+}
+
+.artifact-item:hover img {
+    filter: grayscale(30%) contrast(120%);
+}
+
+.artifact-item p {
+    font-size: 0.9rem;
+    color: var(--gray-70);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .timeline:before {
+        left: 30px;
+    }
+    
+    .timeline-item,
+    .timeline-item:nth-child(odd) {
+        flex-direction: column;
+        text-align: left;
+    }
+    
+    .timeline-date,
+    .timeline-content {
+        width: 100%;
+    }
+    
+    .timeline-date {
+        padding-left: 60px;
+        margin-bottom: 1rem;
+    }
+    
+    .history-hero {
+        height: 50vh;
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .characters-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,309 @@
+/* ============ GASTRONOMÍA ANDAHUAYLINA ============ */
+
+.gastronomy-page {
+    background-color: var(--white);
+    color: var(--gray-90);
+}
+
+/* Hero Section */
+.gastronomy-hero {
+    position: relative;
+    height: 60vh;
+    min-height: 500px;
+    margin-top: 80px;
+    overflow: hidden;
+}
+
+.gastronomy-hero .hero-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%) contrast(120%) brightness(0.7);
+    z-index: 1;
+}
+
+.gastronomy-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 5%;
+    color: var(--white);
+}
+
+.gastronomy-hero .hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 300;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.gastronomy-hero .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 300;
+    max-width: 700px;
+    opacity: 0.9;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Sección de Platos */
+.dishes-section {
+    padding: 5rem 0;
+}
+
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.dish-card {
+    background: var(--white);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.dish-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.dish-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.dish-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(80%) contrast(110%);
+    transition: var(--transition);
+}
+
+.dish-card:hover .dish-image img {
+    filter: grayscale(30%) contrast(110%);
+}
+
+.dish-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--black);
+    color: var(--white);
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 20px;
+}
+
+.dish-content {
+    padding: 1.8rem;
+}
+
+.dish-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.dish-description {
+    color: var(--gray-70);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.dish-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.dish-details p {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--gray-50);
+}
+
+.dish-details i {
+    margin-right: 0.5rem;
+    color: var(--gray-30);
+}
+
+.recipe-toggle {
+    background: transparent;
+    border: none;
+    color: var(--black);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    transition: var(--transition);
+}
+
+.recipe-toggle i {
+    transition: var(--transition);
+}
+
+.recipe-toggle.active i {
+    transform: rotate(180deg);
+}
+
+.dish-recipe {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    color: var(--gray-70);
+}
+
+.dish-recipe.show {
+    max-height: 1000px;
+    padding-top: 1rem;
+}
+
+.dish-recipe h4 {
+    font-size: 1.1rem;
+    margin: 1rem 0 0.5rem;
+    font-weight: 500;
+}
+
+.dish-recipe ul, .dish-recipe ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.dish-recipe li {
+    margin-bottom: 0.5rem;
+}
+
+/* Ingredientes */
+.ingredients-section {
+    padding: 3rem 0;
+    background: var(--gray-10);
+}
+
+.ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.ingredient-card {
+    text-align: center;
+    padding: 1.5rem;
+    transition: var(--transition);
+}
+
+.ingredient-card:hover {
+    transform: translateY(-5px);
+}
+
+.ingredient-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(120%);
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.ingredient-card:hover img {
+    filter: grayscale(30%) contrast(120%);
+}
+
+.ingredient-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.ingredient-card p {
+    color: var(--gray-70);
+    font-size: 0.9rem;
+}
+
+/* Restaurantes */
+.restaurants-section {
+    padding: 5rem 0;
+}
+
+.restaurants-slider {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scroll-snap-type: x mandatory;
+    margin-top: 2rem;
+}
+
+.restaurant-card {
+    min-width: 300px;
+    scroll-snap-align: start;
+}
+
+.restaurant-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(120%);
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.restaurant-card:hover img {
+    filter: grayscale(30%) contrast(120%);
+}
+
+.restaurant-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.restaurant-card p {
+    color: var(--gray-70);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.restaurant-rating {
+    color: var(--gray-50);
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dishes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gastronomy-hero {
+        height: 50vh;
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .ingredients-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,263 @@
+/* Variables */
+:root {
+    --negro: #000000;
+    --blanco: #FFFFFF;
+    --gris-oscuro: #222222;
+    --gris-medio: #555555;
+    --gris-claro: #EEEEEE;
+    --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --borde: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body {
+    line-height: 1.7;
+    color: var(--gris-oscuro);
+    background-color: var(--blanco);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    background-color: var(--blanco);
+    padding: 1.2rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: var(--sombra);
+    border-bottom: var(--borde);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    height: 36px;
+    filter: grayscale(100%) contrast(200%);
+}
+
+.logo-text {
+    font-weight: 700;
+    color: var(--negro);
+    letter-spacing: 0.5px;
+}
+
+/* Navegación */
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--gris-medio);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.link-text {
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.link-text::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--negro);
+    transition: width 0.4s ease;
+}
+
+.nav-link:hover .link-text::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--negro);
+}
+
+.nav-link.active {
+    color: var(--negro);
+    font-weight: 600;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--negro);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+    background-color: var(--gris-claro);
+}
+
+.hero-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%) contrast(110%);
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+}
+
+.hero-title {
+    font-size: 3.2rem;
+    margin-bottom: 1.2rem;
+    color: var(--negro);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.hero-title strong {
+    font-weight: 600;
+}
+
+.hero-title:hover {
+    letter-spacing: 1.5px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--gris-medio);
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.btn {
+    display: inline-block;
+    background: transparent;
+    color: var(--negro);
+    padding: 0.9rem 2rem;
+    border-radius: 0;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 1rem;
+    border: 1px solid var(--negro);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.btn:hover {
+    background: var(--negro);
+    color: var(--blanco);
+    transform: translateY(-3px);
+}
+
+/* Contenido */
+.intro {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.intro h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    color: var(--negro);
+}
+
+.intro p {
+    color: var(--gris-medio);
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--gris-claro);
+    padding: 3rem 0;
+    border-top: var(--borde);
+}
+
+.footer p {
+    text-align: center;
+    color: var(--gris-medio);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--blanco);
+        padding: 1.5rem;
+        box-shadow: var(--sombra);
+        gap: 1.5rem;
+    }
+
+    .navbar ul.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Efectos especiales */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.intro {
+    animation: fadeIn 1s ease-out;
+}

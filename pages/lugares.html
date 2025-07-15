@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lugares Turísticos de Andahuaylas | Tierra de los Celajes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/lugares.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../images/andahuaylas/Escudo_de_Andahuaylas.png">
+</head>
+<body class="places-page">
+    <!-- Barra de Navegación Mejorada -->
+    <header class="header">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../images/andahuaylas/Escudo_de_Andahuaylas.png" alt="Escudo de Andahuaylas" class="logo-img">
+                <span class="logo-text">Andahuaylas</span>
+            </a>
+            <nav class="navbar">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> <span class="link-text">Inicio</span></a></li>
+                    <li><a href="lugares.html" class="nav-link active"><i class="fas fa-mountain"></i> <span class="link-text">Lugares</span></a></li>
+                    <li><a href="historia.html" class="nav-link"><i class="fas fa-landmark"></i> <span class="link-text">Historia</span></a></li>
+                    <li><a href="gastronomia.html" class="nav-link"><i class="fas fa-utensils"></i> <span class="link-text">Gastronomía</span></a></li>
+                    <li><a href="festivales.html" class="nav-link"><i class="fas fa-calendar-alt"></i> <span class="link-text">Festivales</span></a></li>
+                </ul>
+                <button class="menu-toggle" aria-label="Menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section Rediseñado -->
+    <section class="places-hero">
+        <div class="hero-image-container">
+            <img src="../images/lugares/fol.jpg" alt="Vista panorámica de Andahuaylas" class="hero-image">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Lugares Turísticos</h1>
+            <p class="hero-subtitle">Descubre los paisajes más impresionantes de la región</p>
+            <a href="#places-grid" class="btn-explore">
+                Explorar <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <main class="places-main container">
+        <!-- Sección de Lugares Mejorada -->
+        <section class="places-section" id="places-grid">
+            <div class="section-header">
+                <h2 class="section-title">Explora Nuestros Atractivos</h2>
+                <p class="section-subtitle">Conoce los sitios más emblemáticos de Andahuaylas</p>
+            </div>
+
+            <div class="places-grid">
+                <!-- Tarjeta 1 - Laguna de Pacucha -->
+                <article class="place-card">
+                    <div class="place-image-container">
+                        <img src="../images/lugares/laguna.jpg" alt="Laguna de Pacucha" class="place-image">
+                        <span class="place-badge">Naturaleza</span>
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Laguna de Pacucha</h3>
+                        <p class="place-description">Una de las lagunas más bellas del Perú, rodeada de paisajes andinos y perfecta para paseos en bote y observación de aves.</p>
+                        <div class="place-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>17 km de la ciudad</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Abril - Octubre</span>
+                            </div>
+                        </div>
+                        <div class="place-actions">
+                            <a href="https://es.wikipedia.org/wiki/Laguna_Pacucha" class="btn btn-outline" target="_blank">
+                                Ver más <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 2 - Complejo Arqueológico de Sondor -->
+                <article class="place-card">
+                    <div class="place-image-container">
+                        <img src="../images/lugares/sondor.jpg" alt="Complejo Arqueológico de Sondor" class="place-image">
+                        <span class="place-badge">Arqueología</span>
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Complejo Arqueológico de Sondor</h3>
+                        <p class="place-description">Importante centro ceremonial de la cultura Chanka con vista panorámica a la laguna Pacucha y arquitectura impresionante.</p>
+                        <div class="place-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>19 km de la ciudad</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>8:00 am - 5:00 pm</span>
+                            </div>
+                        </div>
+                        <div class="place-actions">
+                            <a href="https://consultasenlinea.mincetur.gob.pe/fichaInventario/index.aspx?cod_Ficha=578" class="btn btn-outline">
+                                Ver más <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 3 - Hualalachi -->
+                <article class="place-card">
+                    <div class="place-image-container">
+                        <img src="../images/lugares/hua.jpg" alt="Hualalachi" class="place-image">
+                        <span class="place-badge">Aventura</span>
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Hualalachi</h3>
+                        <p class="place-description">Cataratas espectaculares en el distrito de Talavera, con caídas de agua cristalina rodeadas de vegetación exuberante.</p>
+                        <div class="place-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Norte de Talavera</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-hiking"></i>
+                                <span>Dificultad: Fácil</span>
+                            </div>
+                        </div>
+                        <div class="place-actions">
+                            <a href="https://rpp.pe/virales/mas-virales/apurimac-el-encanto-de-las-aguas-de-hualalachi-noticia-305605#google_vignette" class="btn btn-outline">
+                                Ver más <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 4 - Plaza de Armas -->
+                <article class="place-card">
+                    <div class="place-image-container">
+                        <img src="../images/lugares/pla.aspx" alt="Plaza de Armas de Andahuaylas" class="place-image">
+                        <span class="place-badge">Cultura</span>
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Plaza de Armas</h3>
+                        <p class="place-description">Corazón de la ciudad, rodeada de arquitectura colonial y la imponente Catedral de San Pedro, con jardines bien cuidados.</p>
+                        <div class="place-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Centro de Andahuaylas</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Acceso libre</span>
+                            </div>
+                        </div>
+                        <div class="place-actions">
+                            <a href="https://consultasenlinea.mincetur.gob.pe/fichaInventario/index.aspx?cod_Ficha=8806" class="btn btn-outline">
+                                Ver más <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Mapa Interactivo Mejorado -->
+        <section class="map-section">
+            <div class="section-header">
+                <h2 class="section-title">Ubicación de los Atractivos</h2>
+                <p class="section-subtitle">Encuentra cómo llegar a estos maravillosos lugares</p>
+            </div>
+            <div class="map-container">
+                <img src="../images/lugares/map.jpg" alt="Mapa turístico de Andahuaylas" class="map-image">
+                <div class="map-markers">
+                    <div class="map-marker" style="top: 30%; left: 25%;" data-place="Laguna de Pacucha">
+                        <i class="fas fa-map-pin"></i>
+                        <div class="map-tooltip">Laguna de Pacucha</div>
+                    </div>
+                    <div class="map-marker" style="top: 35%; left: 28%;" data-place="Complejo de Sondor">
+                        <i class="fas fa-map-pin"></i>
+                        <div class="map-tooltip">Complejo de Sondor</div>
+                    </div>
+                    <div class="map-marker" style="top: 60%; left: 70%;" data-place="Hualalachi">
+                        <i class="fas fa-map-pin"></i>
+                        <div class="map-tooltip">Hualalachi</div>
+                    </div>
+                    <div class="map-marker" style="top: 45%; left: 50%;" data-place="Plaza de Armas">
+                        <i class="fas fa-map-pin"></i>
+                        <div class="map-tooltip">Plaza de Armas</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Mejorado -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h3 class="footer-title">Andahuaylas Turismo</h3>
+                    <p class="footer-text">Descubre la belleza de la "Tierra de los Celajes" y vive experiencias inolvidables.</p>
+                </div>
+                <div class="footer-col footer-contact">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-envelope"></i> dircetur@regionapurimac.gob.pe</li>
+                        <li><i class="fas fa-phone"></i> +51  920 504 136/li>
+                        <li><i class="fas fa-map-marker-alt"></i> Plaza de Armas, Andahuaylas</li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-social">
+                    <h3 class="footer-title">Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2025 Andahuaylas Turismo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

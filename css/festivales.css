@@ -1,0 +1,297 @@
+/* ============ FESTIVALES ANDAHUAYLINOS ============ */
+
+.festivals-page {
+    background-color: var(--white);
+    color: var(--gray-90);
+}
+
+/* Hero Section */
+.festivals-hero {
+    position: relative;
+    height: 60vh;
+    min-height: 500px;
+    margin-top: 80px;
+    overflow: hidden;
+}
+
+.festivals-hero .hero-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%) contrast(120%) brightness(0.7);
+    z-index: 1;
+}
+
+.festivals-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 5%;
+    color: var(--white);
+}
+
+.festivals-hero .hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 300;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.festivals-hero .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 300;
+    max-width: 700px;
+    opacity: 0.9;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Festivales Destacados */
+.featured-festivals {
+    padding: 5rem 0;
+}
+
+.festivals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.festival-card {
+    background: var(--white);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.festival-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.festival-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.festival-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(80%) contrast(110%);
+    transition: var(--transition);
+}
+
+.festival-card:hover .festival-image img {
+    filter: grayscale(30%) contrast(110%);
+}
+
+.festival-date {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: 0.5rem;
+    line-height: 1;
+    border-radius: 4px;
+}
+
+.festival-date .month {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.festival-date .day {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.festival-content {
+    padding: 1.8rem;
+}
+
+.festival-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.festival-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--gray-70);
+}
+
+.festival-meta span {
+    display: flex;
+    align-items: center;
+}
+
+.festival-meta i {
+    margin-right: 0.5rem;
+    color: var(--gray-30);
+}
+
+.festival-description {
+    color: var(--gray-70);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: var(--black);
+    padding: 0.7rem 1.5rem;
+    border: 1px solid var(--black);
+    border-radius: 0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-outline:hover {
+    background: var(--black);
+    color: var(--white);
+}
+
+.btn-outline i {
+    margin-left: 0.5rem;
+    transition: var(--transition);
+}
+
+.btn-outline:hover i {
+    transform: translateX(3px);
+}
+
+/* Calendario Anual */
+.calendar-section {
+    padding: 3rem 0;
+    background: var(--gray-10);
+}
+
+.calendar-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.calendar-month {
+    background: var(--white);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.calendar-month h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--gray-20);
+}
+
+.calendar-month ul {
+    list-style: none;
+}
+
+.calendar-month li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+.calendar-month .date {
+    display: inline-block;
+    min-width: 30px;
+    font-weight: 500;
+    margin-right: 0.8rem;
+    color: var(--black);
+}
+
+/* Galería Multimedia */
+.gallery-section {
+    padding: 5rem 0;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(120%);
+    transition: var(--transition);
+}
+
+.gallery-item:hover img {
+    filter: grayscale(30%) contrast(120%);
+    transform: scale(1.05);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(0,0,0,0.7);
+    color: var(--white);
+    font-size: 0.9rem;
+    transform: translateY(100%);
+    transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-caption {
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .festivals-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .festivals-hero {
+        height: 50vh;
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .calendar-container {
+        grid-template-columns: 1fr;
+    }
+}
