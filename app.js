@@ -38,7 +38,13 @@ async function loadComments() {
                 <div class="comment">
                     <div class="comment-header">
                         <span class="comment-author">${comment.name}</span>
-                        <span class="comment-date">${new Date(comment.created_at).toLocaleDateString()}</span>
+                        <span class="comment-date">${new Date(comment.created_at).toLocaleDateString('es-PE', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        })}</span>
                     </div>
                     <div class="comment-text">${comment.comment}</div>
                 </div>
@@ -65,9 +71,15 @@ async function handleSubmit(e) {
     const email = form.email.value.trim();
     const comment = form.comment.value.trim();
     
-    // Validación simple
+    // Validación mejorada
     if (!name || !email || !comment) {
         showMessage(messageEl, 'Por favor completa todos los campos', 'error');
+        return;
+    }
+    
+    // Validación de formato de correo (debe contener @ y punto)
+    if (!isValidEmail(email)) {
+        showMessage(messageEl, 'Por favor ingresa un correo electrónico válido (debe contener @)', 'error');
         return;
     }
     
@@ -80,7 +92,13 @@ async function handleSubmit(e) {
         const { data, error } = await supabase
             .from('comments')
             .insert([
-                { name, email, comment, approved: false } // Inicialmente no aprobado
+                { 
+                    name, 
+                    email, 
+                    comment, 
+                    approved: false, // Inicialmente no aprobado
+                    created_at: new Date().toISOString() 
+                }
             ]);
         
         if (error) throw error;
@@ -91,16 +109,23 @@ async function handleSubmit(e) {
         // Limpiar formulario
         form.reset();
         
-        // Opcional: recargar comentarios después de un tiempo
+        // Recargar comentarios después de un tiempo
         setTimeout(loadComments, 3000);
     } catch (error) {
         console.error('Error submitting comment:', error);
-        showMessage(messageEl, 'Error al enviar el comentario. Por favor, inténtalo de nuevo.', 'error');
+        showMessage(messageEl, 'Error al enviar el comentario: ' + error.message, 'error');
     } finally {
         // Restaurar botón
         submitBtn.disabled = false;
         submitBtn.textContent = 'Enviar Comentario';
     }
+}
+
+// Función para validar formato de correo
+function isValidEmail(email) {
+    // Expresión regular simple que verifica que haya un @ y al menos un punto después
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }
 
 // Función auxiliar para mostrar mensajes
