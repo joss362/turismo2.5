@@ -1,7 +1,7 @@
 // Configura Supabase
 const supabaseUrl = 'https://lsdfweaaxznhnvfvnavi.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxzZGZ3ZWFheHpuaG52ZnZuYXZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI2MTc4NTQsImV4cCI6MjA2ODE5Mzg1NH0.PC6FOZvNSgsfFxZzrd311YW9IjMy3UauNByikWMqmrU'; // Usa la clave pública
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 // Cargar comentarios cuando la página se cargue
 document.addEventListener('DOMContentLoaded', () => {
