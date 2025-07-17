@@ -12,6 +12,52 @@ document.addEventListener('DOMContentLoaded', () => {
     commentForm.addEventListener('submit', handleSubmit);
 });
 
+// Función para sanitizar el input (elimina etiquetas HTML/JS)
+function sanitizeInput(input) {
+    if (!input) return '';
+    return input.replace(/<[^>]*>?/gm, '');
+}
+
+// Función para detectar si el texto contiene código
+function containsCode(text) {
+    if (!text) return false;
+    
+    // Patrones comunes en código
+    const codePatterns = [
+        /function\s*\(/,
+        /=>/,
+        /<\w+>/,
+        /<\/\w+>/,
+        /{\s*[\w:]+\s*}/,
+        /\[.*\]/,
+        /console\.log/,
+        /(var|let|const)\s+\w+\s*=/,
+        /(if|for|while)\s*\(.*\)/,
+        /<\/?script>/i,
+        /(eval|alert)\(/,
+        /\\x[0-9a-fA-F]{2}/,  // Caracteres escapados
+        /&#x?[0-9a-fA-F]+;/  // Entidades HTML
+    ];
+    
+    return codePatterns.some(pattern => pattern.test(text));
+}
+
+// Función para validar formato de correo
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// Función auxiliar para mostrar mensajes
+function showMessage(element, text, type) {
+    element.textContent = text;
+    element.className = 'message ' + type;
+    setTimeout(() => {
+        element.textContent = '';
+        element.className = 'message';
+    }, 5000);
+}
+
 // Función para cargar comentarios desde Supabase
 async function loadComments() {
     const commentsList = document.getElementById('comments-list');
@@ -34,10 +80,14 @@ async function loadComments() {
         // Generar HTML para los comentarios
         let html = '';
         comments.forEach(comment => {
+            // Asegurarse de escapar el contenido antes de mostrarlo
+            const safeComment = sanitizeInput(comment.comment);
+            const safeName = sanitizeInput(comment.name);
+            
             html += `
                 <div class="comment">
                     <div class="comment-header">
-                        <span class="comment-author">${comment.name}</span>
+                        <span class="comment-author">${safeName}</span>
                         <span class="comment-date">${new Date(comment.created_at).toLocaleDateString('es-PE', {
                             year: 'numeric',
                             month: 'long',
@@ -46,7 +96,7 @@ async function loadComments() {
                             minute: '2-digit'
                         })}</span>
                     </div>
-                    <div class="comment-text">${comment.comment}</div>
+                    <div class="comment-text">${safeComment}</div>
                 </div>
             `;
         });
@@ -66,20 +116,37 @@ async function handleSubmit(e) {
     const submitBtn = document.getElementById('submit-btn');
     const messageEl = document.getElementById('form-message');
     
-    // Obtener valores del formulario
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const comment = form.comment.value.trim();
+    // Obtener y sanitizar valores del formulario
+    const name = sanitizeInput(form.name.value.trim());
+    const email = sanitizeInput(form.email.value.trim());
+    const comment = sanitizeInput(form.comment.value.trim());
     
-    // Validación mejorada
+    // Validación básica
     if (!name || !email || !comment) {
         showMessage(messageEl, 'Por favor completa todos los campos', 'error');
         return;
     }
     
-    // Validación de formato de correo (debe contener @ y punto)
+    // Validación de longitud máxima
+    if (name.length > 50) {
+        showMessage(messageEl, 'El nombre no puede exceder los 50 caracteres', 'error');
+        return;
+    }
+    
+    if (comment.length > 1000) {
+        showMessage(messageEl, 'El comentario no puede exceder los 1000 caracteres', 'error');
+        return;
+    }
+    
+    // Validación de correo
     if (!isValidEmail(email)) {
-        showMessage(messageEl, 'Por favor ingresa un correo electrónico válido (debe contener @)', 'error');
+        showMessage(messageEl, 'Por favor ingresa un correo electrónico válido', 'error');
+        return;
+    }
+    
+    // Validación contra código o contenido sospechoso
+    if (containsCode(comment) || containsCode(name) || containsCode(email)) {
+        showMessage(messageEl, 'El contenido no puede incluir código o sintaxis de programación', 'error');
         return;
     }
     
@@ -91,15 +158,13 @@ async function handleSubmit(e) {
         // Insertar comentario en Supabase
         const { data, error } = await supabase
             .from('comments')
-            .insert([
-                { 
-                    name, 
-                    email, 
-                    comment, 
-                    approved: false, // Inicialmente no aprobado
-                    created_at: new Date().toISOString() 
-                }
-            ]);
+            .insert([{ 
+                name, 
+                email, 
+                comment, 
+                approved: false, // Requiere aprobación manual
+                created_at: new Date().toISOString() 
+            }]);
         
         if (error) throw error;
         
@@ -113,27 +178,10 @@ async function handleSubmit(e) {
         setTimeout(loadComments, 3000);
     } catch (error) {
         console.error('Error submitting comment:', error);
-        showMessage(messageEl, 'Error al enviar el comentario: ' + error.message, 'error');
+        showMessage(messageEl, 'Error al enviar el comentario. Por favor, intenta con un contenido diferente.', 'error');
     } finally {
         // Restaurar botón
         submitBtn.disabled = false;
         submitBtn.textContent = 'Enviar Comentario';
     }
-}
-
-// Función para validar formato de correo
-function isValidEmail(email) {
-    // Expresión regular simple que verifica que haya un @ y al menos un punto después
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Función auxiliar para mostrar mensajes
-function showMessage(element, text, type) {
-    element.textContent = text;
-    element.className = 'message ' + type;
-    setTimeout(() => {
-        element.textContent = '';
-        element.className = 'message';
-    }, 5000);
 }
